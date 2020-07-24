@@ -80,7 +80,7 @@ It turns out, the users who arrive in the mornings, betwen 6 AM and noon, demand
 
 It also worth to look into the lengths of charging sessions. Below is the graph of average lengths of one charging session, distributed by the time of car's arrival. 
 
-<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charge_request_by_hour.png>
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/length_charging_sessions.png>
 
 ### Hypothesis testing: Welch t-test 
 
@@ -90,5 +90,47 @@ To prove my hypothesis "the average length of a charging session is different fo
 The mean session length in day group was 3.24 hours (SD = 2.62), whereas the mean session length in night group was 2.47 (SD = 2.81). A Welch two-samples t-test showed that the difference was statistically significant, with t-statistic 19.51 and p < 0.0001.
 
 
-###
+## The difference between charge request and actual number of kWh delivered
+
+To plan architectures and scheduling for future charging stations, it worth knowing if current setup satisfies user's demand. 
+To do so, I decided to segment users by the type of a car they drive, and look into the difference between their charging requests and the amount of energy they get.
+
+### Smart ED charging behavior 
+
+First, I filtered sessions that match the parameters of Smart ED cars (max kWh delivered < 16.5 due the battery size, and WhPerMile between 300 and 340). In result, I got 5 users with total 147 charging sessions. I used bootstrapping to estimate means distributions for smart drivrs kWh requests and kWh delivered. 
+
+Results - kWh requested:
+```
+All Smart users kWh requests sample mean: 11.7
+Variance of all Smart users charge request: 31.4025514739229
+
+All Smart users kWh requests bootsrtap sample mean: 11.703125061224489
+Variance of all Smart users kWh requests means: 0.212730247727361
+
+Confidence interval for kWh requests means: (11.221622448979591, 12.18626870748299)
+```
+Results - kWh delivered:
+
+```
+All Smart kWhDelivered sample mean: 4.51
+Variance of all Smart  kWhDelivered: 14.037654486784
+
+All Smart kWhDelivered bootsrtap sample mean: 4.519385128000001
+Variance of all Smart kWhDelivered means: 0.11195520215423481
+Confidence interval for kWh requests means: (4.1704479999999995, 4.8670344000000005)
+```
+
+Data show that on average Smart car drivers requests at least two times more energy than they get.
+
+
+### Tesla 3 charging behavior 
+
+To find Tesla 3 cars, I filered data by WhPerMile < 250 (Tesla 3 is the most efficient electric car as of right now). In result, I got 65 users with total 2824 charging sessions. 
+
+Similar to Smart ED, Tesla 3 drivers ordered on average almost twice as much electricity as they recieved:
+
+```
+Tesla 3 users kWh requests sample mean: 24.6
+Tesla 3 users kWhDelivered sample mean: 13.0
+```
 
