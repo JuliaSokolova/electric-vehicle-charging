@@ -45,8 +45,37 @@ At the monthly scale, there is also fluctuation.
 
 <p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charging_sessions_per_month.png> 
   
-To  explore power demand fluctuation further, I looked into numbers of cars arriving at charging station for each hour of the day. I used  maximum likelihood estimation, assuming that my random variable 'number of cars arriving' has geometric distribution.
+### Bayasian method to model user's behavior
 
+I used Bayasian statistics to infer behaviour of cars arriving model, looking into a question if the user's charging habits have changed over time, either gradually or suddenly. To do so, I looked into time persiod starting Jan, 1 2020.
+
+Using PyMC3 library (Markov Chain Monte Carlo), I generated random variables from the posterior distributions of λ1,λ2 and τ. The images below show what the posterior distributions look like.
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/posteriour_probabilities.png> 
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/posteriors_tau.png> 
+
+The model showes λ1 around 27 and λ2 is around 2. The posterior distributions of the two λs are clearly distinct, indicating that it is indeed likely that there was a change in the user's charging behaviour. The posterior distribution for τ showes a 65% chance that the user's behaviour changed on day 73 (May 13, 2020), which corrspond to California 'stay-at-home' order due to COVID19.
+
+As expected, my analysis shows strong support for believing the user's behavior did change (λ1 would have been close in value to λ2 had this not been true), and that the change was sudden rather than gradual (as demonstrated by τ's strongly peaked posterior distribution). 
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/expected_number_of_cars_arrive.png> 
+
+
+### Maximum likelihood estimation for car arrivals by the time of day
+
+To  explore power demand fluctuation further, I looked into numbers of cars arriving at charging station for each hour of the day. I used  maximum likelihood estimation, assuming that my random variable 'number of cars arriving' has geometric distribution. 
+Data show that at peak we could expect up to 8 cars arriving every hour between 3 and 5 PM; all other time, cars arrive at an average rate betwen 2 and 4 cars per hour. 
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/cars_by_the_hour_max_likelihood.png> 
+
+ 
+### 
+
+To predict electricity demand, we would also need to know how much kWh our users would request. For that, I looked into average charge requests for one car, distributed by the hour of arrival.
+It turns out, the users who arrive in the mornings, betwen 6 AM and noon, demand the highest amount of electricity, between 30 and 40 kWh. For cars arriving at other times, the the number stays around 20 kWh.
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charge_request_by_hour.png>
 
 
 
