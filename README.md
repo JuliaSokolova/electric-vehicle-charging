@@ -90,7 +90,8 @@ To prove my hypothesis "the average length of a charging session is different fo
 h0: Time of day do not affect charging length
 h1: People charge their cars for longer durign daytime (8AM - 10PM)
 
-The mean session length in day group was 3.24 hours (SD = 2.62), whereas the mean session length in night group was 2.47 (SD = 2.81). A Welch two-samples t-test showed that the difference was statistically significant, with t-statistic 19.51 and p < 0.0001.
+The mean session length in day group was 3.24 hours (SD = 2.62), whereas the mean session length in night group was 2.47 (SD = 2.81). 
+A Welch two-samples t-test showed that the difference was statistically significant, with t-statistic 19.51 and p < 0.0001.
 
 
 ## The difference between charge request and actual number of kWh delivered
