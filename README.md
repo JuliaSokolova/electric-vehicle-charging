@@ -87,6 +87,9 @@ It also worth to look into the lengths of charging sessions. Below is the graph 
 From a graph we can see there is a visible fluctiuaton of this random variable. 
 To prove my hypothesis "the average length of a charging session is different for daytime (8AM - 10PM) and nighttime (10PM - 8AM)", I run Welch t-test on two corresponding datasets of sessions charging times.
 
+h0: Time of day do not affect charging length
+h1: People charge their cars for longer durign daytime (8AM - 10PM)
+
 The mean session length in day group was 3.24 hours (SD = 2.62), whereas the mean session length in night group was 2.47 (SD = 2.81). A Welch two-samples t-test showed that the difference was statistically significant, with t-statistic 19.51 and p < 0.0001.
 
 
