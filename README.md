@@ -37,10 +37,16 @@ The ACN data was easily accessable via [API](https://ev.caltech.edu/dataset). I 
 
 My first goal was to explore the patterns of car arriving at the charging station. 
 I expected to see difference in the number of charging sessions for different month, weekdays and time of the day. Quick EDA proved my assumption:
+  
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charging_sessions_per_weeday.png>  
+  
+No surprise the garage has more cars arriving during weekdays - it is mostly used by univesity staff and students.
+At the monthly scale, there is also fluctuation. 
 
 <p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charging_sessions_per_month.png> 
   
-<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charging_sessions_per_weeday.png>  
+To  explore power demand fluctuation further, I looked into numbers of cars arriving at charging station for each hour of the day. I used  maximum likelihood estimation, assuming that my random variable 'number of cars arriving' has geometric distribution.
+
 
 
 
