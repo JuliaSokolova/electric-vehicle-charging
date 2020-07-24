@@ -70,7 +70,7 @@ Data show that at peak we could expect up to 8 cars arriving every hour between 
 <p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/cars_by_the_hour_max_likelihood.png> 
 
  
-### 
+### Additional data to estimate the demand of electricity
 
 To predict electricity demand, we would also need to know how much kWh our users would request. For that, I looked into average charge requests for one car, distributed by the hour of arrival.
 It turns out, the users who arrive in the mornings, betwen 6 AM and noon, demand the highest amount of electricity, between 30 and 40 kWh. For cars arriving at other times, the the number stays around 20 kWh.
@@ -78,4 +78,17 @@ It turns out, the users who arrive in the mornings, betwen 6 AM and noon, demand
 <p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charge_request_by_hour.png>
 
 
+It also worth to look into the lengths of charging sessions. Below is the graph of average lengths of one charging session, distributed by the time of car's arrival. 
+
+<p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/charge_request_by_hour.png>
+
+### Hypothesis testing: Welch t-test 
+
+From a graph we can see there is a visible fluctiuaton of this random variable. 
+To prove my hypothesis "the average length of a charging session is different for daytime (8AM - 10PM) and nighttime (10PM - 8AM)", I run Welch t-test on two corresponding datasets of sessions charging times.
+
+The mean session length in day group was 3.24 hours (SD = 2.62), whereas the mean session length in night group was 2.47 (SD = 2.81). A Welch two-samples t-test showed that the difference was statistically significant, with t-statistic 19.51 and p < 0.0001.
+
+
+###
 
