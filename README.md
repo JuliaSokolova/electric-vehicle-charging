@@ -134,3 +134,14 @@ Tesla 3 users kWh requests sample mean: 24.6
 Tesla 3 users kWhDelivered sample mean: 13.0
 ```
 
+This EDA showed there is a need for charging process optimization to satisfy user's demand.
+
+
+## Further directions
+
+It woudl be interesting to look more into user's charging behaviour patterns and predict peaks /drops in electricity demand at scale.
+
+
+## References
+ACN data: [https://ev.caltech.edu/dataset](https://ev.caltech.edu/dataset)
+
