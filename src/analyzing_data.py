@@ -4,6 +4,7 @@ from scipy import stats
 import numpy as np
 import seaborn as sns
 import plotly.express as px
+plt.rcParams.update({'font.size': 16})
 
 
 def avg_reguest_by_hour(hour, df=users):
@@ -49,7 +50,6 @@ if __name__ = '__main__':
 
     # generates a graph of the total number
     # of charging sessions for each day of the week
-    plt.rcParams.update({'font.size': 16})
     fig, ax = plt.subplots(figsize=(16, 6))
     ax = (charging["ConnectionTime"].groupby([
         charging["ConnectionTime"].dt.weekday])
@@ -61,9 +61,20 @@ if __name__ = '__main__':
 
     # plot avarage size of charging requests for each hour of car arrival
     requests = avg_requests(hours)
-    plt.rcParams.update({'font.size': 16})
     ax, fig = plt.subplots(figsize=(16, 6))
     ax = sns.barplot(x=hours, y=requests, color="#8ecd00")
     ax.set_ylabel('kWh')
     ax.set_xlabel('Time of arrival')
     ax.set_title('Average charge request for one car')
+
+    # plotting average length of charging session 
+    # by the hour of car arrival (start of charging session)
+    charging_by_hour = charging.groupby(charging.ConnectionTime.dt.hour).mean()
+    fig, ax = plt.subplots(figsize=(16, 6))
+    y = charging_by_hour.Time
+    x = hours
+    ax = sns.barplot(x, y, color="#8ecd00")
+    ax.set_xlabel('Time of day')
+    ax.set_ylabel('Charging session length (in hours)')
+    ax.set_title('''Average length of a charging session 
+                    for a car arriving at certain hour''')
