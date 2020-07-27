@@ -64,7 +64,7 @@ As expected, my analysis shows strong support for believing the user's behavior 
 
 ### Maximum likelihood estimation for car arrivals by the time of day
 
-To  explore power demand fluctuation further, I looked into numbers of cars arriving at charging station for each hour of the day. I used  maximum likelihood estimation, assuming that my random variable 'number of cars arriving' has geometric distribution. 
+To  explore power demand fluctuation further, I looked into numbers of cars arriving at charging station for each hour of the day. I used  maximum likelihood estimation, assuming that my random variable 'number of cars arriving' has poisson distribution. 
 Data show that at peak we could expect up to 8 cars arriving every hour between 3 and 5 PM; all other time, cars arrive at an average rate between 2 and 4 cars per hour. 
 
 <p align="center"><img width=100% src=https://github.com/JuliaSokolova/electric-vehicle-charging/blob/master/images/cars_by_the_hour_max_likelihood.png> 
