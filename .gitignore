@@ -4,3 +4,4 @@
 #ignore folders
 data/
 notebooks/
+.ipynb_checkpoints
